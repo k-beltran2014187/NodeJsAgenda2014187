@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="page-header")
+      h2 Contactos
+  div(class="row")
+    div(class="col-md-10")
+      h2 Lista de Contactos
+      table(class="table table-hover")
+        thead
+          tr
+            th Apellido
+            th Nombre
+            th Direccion
+            th Telefono
+            th Correo
+            th Categoria
+            th Opciones
+        tbody(data-bind="foreach: contactos")
+          tr
+            td(data-bind="text: apellido")
+            td(data-bind="text: nombre")
+            td(data-bind="text: direccion")
+            td(data-bind="text: telefono")
+            td(data-bind="text: correo")
+            td(data-bind="text: nombreCategoria")
+            td
+              div(class="btn-group")
+                button(class="btn btn-danger" data-bind="click: $root.eliminar") Eliminar
+
+
+
+      div(class="input-field col s6")
+            form(class="form-inline" data-bind="submit: agregar")
+              input(data-bind="value: contactoNuevo.apellido" placeholder="Placeholder" id="first_name" type="text" class="validate")
+              label(for="first_name") First Name     
+
+              input(data-bind="value: contactoNuevo.nombre" placeholder="apellido" id="apellido_input" type="text" class="validate")
+              label(for="apellido_input") Apellido 
+              
+              input(data-bind="value: contactoNuevo.direccion" placeholder="direccion" id="direccion_input" type="text" class="validate")
+              label(for="direccion_input") Direccion    
+              
+              input(data-bind="value: contactoNuevo.telefono" placeholder="telefono" id="telefono_input" type="text" class="validate")
+              label(for="telefono_input") Telefono
+              
+              input(data-bind="value: contactoNuevo.correo" placeholder="correo" id="correo_input" type="text" class="validate")
+              label(for="correo_input") Correo   
+              
+              input(data-bind="value: contactoNuevo.idCategoria" placeholder="idCategoria" id="idCategoria_input" type="text" class="validate")
+              label(for="idCategoria_input") idCategoria
+              
+              button(class="btn") REGISTRAR
+
+            
+  include footer
+  script(src="/javascripts/contactoCliente.js")
+            
